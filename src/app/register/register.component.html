@@ -1,0 +1,82 @@
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div
+    style="width: 70%; height: 70%; position: relative"
+    class="d-flex border border-1"
+  >
+    <div
+      style="
+        width: 40%;
+        height: 100%;
+        background-image: url(https://images.pexels.com/photos/5195565/pexels-photo-5195565.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+      "
+    ></div>
+    <div style="position: absolute; top: 25px; right: 30px">
+      <a routerLink="">
+        <i class="fa-solid fa-xmark text-muted fa-xl"></i>
+      </a>
+    </div>
+    <div style="width: 60%; height: 100%; background-color: white">
+      <div class="p-5">
+        <h3 class="fw-100">Create account!</h3>
+        <form>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Username</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Email address"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Password"
+            />
+            <label for="floatingInput">Password</label>
+          </div>
+
+          <div class="form-check mb-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="remember"
+            />
+            <label class="form-check-label mb-2" for="remember"
+              >Remember password</label
+            >
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-dark rounded" type="submit">Register</button>
+            <!-- or Sign in based on the condition -->
+            <div class="text-center">
+              <p class="text-muted mt-3">
+                Already registered?
+                <a routerLink="/user/login" class="text-lowercase text-decoration-none text-warning ms-1"
+                  >Login here</a
+                >
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

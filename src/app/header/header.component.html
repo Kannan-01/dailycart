@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-white border">
+  <div class="container" style="height: 70px">
+    <a class="navbar-brand" routerLink=""
+      ><i class="fa-brands fa-shopify"></i> DailyCart</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex ms-auto me-auto w-50" role="search">
+        <input
+          class="form-control border-0"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          class="btn text-dark border-0"
+          style="margin-left: -50px"
+          type="submit"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" routerLink="user/wishlist">
+          <button class="btn text-dark me-2 border-0">
+            <i class="fa-regular fa-heart me-2 text-danger"></i>Wishlist
+          </button>
+        </li>
+        <li class="nav-item" routerLink="user/cart">
+          <button class="btn text-dark me-2 border-0">
+            <i class="fa-brands fa-shopify me-2"></i>Cart
+            <span class="badge text-dark">0</span>
+          </button>
+        </li>
+        <li class="nav-item" routerLink="user/login">
+          <button class="btn text-dark me-2 border-0">
+            <i class="fa-regular fa-user me-1"></i> Login
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
