@@ -1,26 +1,49 @@
-<!-- Product section-->
+<app-header></app-header>
 <section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img width="400px" class=" mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
-            <div class="col-md-6">
-                <div class="small mb-1">SKU: BST-498</div>
-                <h1 class="display-5 fw-bolder">Shop item template</h1>
-                <div class="fs-5 mb-5">
-                    <span>$40.00</span>
-                </div>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
-                <div class="d-flex">
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="fa-regular fa-heart text-danger me-1"></i>
-                        Add to Wishlist
-                    </button>
-                    <button class="btn btn-outline-dark flex-shrink-0 ms-3" type="button">
-                        <i class="fa-brands fa-shopify fa-xl"></i>
-                        Add to cart
-                    </button>
-                </div>
-            </div>
+  <div
+    class="container justify-content-center"
+    style="width: 100%; height: 100vh; display: flex"
+  >
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+        <img
+          style="object-fit: contain"
+          width="400px"
+          height="400px"
+          class="mb-5 mb-md-0"
+          [src]="product.image"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-6">
+        <span class="small mb-1 text-muted">ID: {{ product._id }}</span>
+        <h1 class="display-5 fw-bolder">{{ product.title }}</h1>
+        <div class="fs-5 mb-2">
+          <span>${{ product.price }}</span>
         </div>
+        <p class="lead" style="text-align: justify;">
+            Description : 
+          {{ product.description }}
+        </p>
+        <div class="d-flex">
+          <button
+            (click)="addToWishlist(product)"
+            class="btn btn-outline-dark flex-shrink-0"
+            type="button"
+          >
+            <i class="fa-regular fa-heart text-danger me-1"></i>
+            Add to Wishlist
+          </button>
+          <button
+            (click)="addTocart(product)"
+            class="btn btn-outline-dark flex-shrink-0 ms-3"
+            type="button"
+          >
+            <i class="fa-brands fa-shopify fa-xl"></i>
+            Add to cart
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

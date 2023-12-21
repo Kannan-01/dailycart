@@ -21,47 +21,66 @@
     <div style="width: 60%; height: 100%; background-color: white">
       <div class="p-5">
         <h3 class="fw-100">Create account!</h3>
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
           <div class="form-floating mb-3">
             <input
               type="text"
               class="form-control"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="username"
+              name="username"
             />
             <label for="floatingInput">Username</label>
           </div>
-
+          <div
+            *ngIf="
+              this.registerForm.get('username')?.errors &&
+              this.registerForm.get('username')?.touched
+            "
+            class="mb-2 text-danger"
+          >
+            invalid username
+          </div>
           <div class="form-floating mb-3">
             <input
               type="email"
               class="form-control"
               id="floatingInput"
               placeholder="Email address"
+              formControlName="email"
+              name="email"
             />
             <label for="floatingInput">Email address</label>
           </div>
-
+          <div
+            *ngIf="
+              this.registerForm.get('email')?.errors &&
+              this.registerForm.get('email')?.touched
+            "
+            class="mb-2 text-danger"
+          >
+            invalid email
+          </div>
           <div class="form-floating mb-3">
             <input
               type="password"
               class="form-control"
               id="floatingInput"
               placeholder="Password"
+              formControlName="password"
+              name="password"
             />
             <label for="floatingInput">Password</label>
           </div>
-
-          <div class="form-check mb-3">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="remember"
-            />
-            <label class="form-check-label mb-2" for="remember"
-              >Remember password</label
-            >
+          <div
+            *ngIf="
+              this.registerForm.get('password')?.errors &&
+              this.registerForm.get('password')?.touched
+            "
+            class="mb-2 text-danger"
+          >
+            invalid password
           </div>
           <div class="d-grid">
             <button class="btn btn-dark rounded" type="submit">Register</button>
@@ -69,7 +88,9 @@
             <div class="text-center">
               <p class="text-muted mt-3">
                 Already registered?
-                <a routerLink="/user/login" class="text-lowercase text-decoration-none text-warning ms-1"
+                <a
+                  routerLink="/user/login"
+                  class="text-lowercase text-decoration-none text-warning ms-1"
                   >Login here</a
                 >
               </p>

@@ -1,8 +1,10 @@
+<app-header></app-header>
 <header>
   <div
     id="carouselExampleAutoplaying"
-    class="carousel slide carousel-dark "
+    class="carousel slide carousel-dark"
     data-bs-ride="carousel"
+    style="margin-top: 70px;"
   >
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -85,10 +87,10 @@
           </div>
           <!-- Product actions-->
           <div class="d-flex justify-content-evenly mb-3">
-            <button class="btn">
+            <button (click)="addToWishlist(Product)" class="btn">
               <i class="fa-regular fa-heart me-2 text-danger fa-xl"></i>
             </button>
-            <button class="btn">
+            <button (click)="addTocart(Product)" class="btn">
               <i class="fa-brands fa-shopify fa-xl"></i>
             </button>
           </div>
