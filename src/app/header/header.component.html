@@ -34,18 +34,19 @@
         </button>
       </form>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLink="user/wishlist">
+        <li class="nav-item" routerLink="/user/wishlist">
           <button class="btn text-dark me-2 border-0">
             <i class="fa-regular fa-heart me-2 text-danger"></i>Wishlist
+            <span class="badge text-dark">{{wishlistCount}}</span>
           </button>
         </li>
-        <li class="nav-item" routerLink="user/cart">
+        <li class="nav-item" routerLink="/user/cart">
           <button class="btn text-dark me-2 border-0">
             <i class="fa-brands fa-shopify me-2"></i>Cart
-            <span class="badge text-dark">0</span>
+            <span class="badge text-dark">{{cartCount}}</span>
           </button>
         </li>
-        <li *ngIf="!loginUsername" class="nav-item" routerLink="user/login">
+        <li *ngIf="!loginUsername" class="nav-item" routerLink="/user/login">
           <button class="btn text-dark me-2 border-0">
             <i class="fa-regular fa-user me-1"></i><span>Login</span>
           </button>

@@ -16,9 +16,10 @@ export class AllProductsComponent implements OnInit {
   }
   addToWishlist(product: any) {
     if (sessionStorage.getItem('token')) {
-      this.api.addToWishlistAPI(product.id).subscribe({
+      this.api.addToWishlistAPI(product).subscribe({
         next: (res: any) => {
-          this.toaster.showSuccess(`product added to wishlist !`);
+          this.toaster.showSuccess(` ${res.title} product added to wishlist !`);
+          this.api.getWishlistCount();
         },
         error: (err: any) => {
           this.toaster.showWarning(err.error);
@@ -28,9 +29,20 @@ export class AllProductsComponent implements OnInit {
       this.toaster.showWarning('Login Please !!!');
     }
   }
+  
   addTocart(product: any) {
     if (sessionStorage.getItem('token')) {
-      this.toaster.showSuccess('proceed');
+      Object.assign(product, { quantity: 1 });
+      this.api.addtocartAPI(product).subscribe({
+        next: (res: any) => {
+          this.toaster.showSuccess(res);
+          this.api.getcartCount()
+        },
+        error: (err: any) => {
+          console.log(err);
+          this.toaster.showError(err.error);
+        },
+      });
     } else {
       this.toaster.showWarning('Login Please !!!');
     }

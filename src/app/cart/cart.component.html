@@ -1,7 +1,10 @@
 <app-header></app-header>
-<div   class="empty-wishlist mb-5 mt-5 d-flex justify-content-center align-items-center flex-column"
-style="width: 100%;height: 100vh;">
-    <img
+<div
+  *ngIf="cartItems.length == 0"
+  class="empty-wishlist mb-5 mt-5 d-flex justify-content-center align-items-center flex-column"
+  style="width: 100%; height: 100vh"
+>
+  <img
     height="250px"
     src="https://htmlstream.com/front/assets/svg/illustrations/oc-empty-cart.svg"
     alt=""
@@ -10,43 +13,96 @@ style="width: 100%;height: 100vh;">
   <a class="btn btn-muted rounded mt-3" routerLink="">Back to Homepage</a>
 </div>
 
-<div class="container mb-5">
-    <h1 class="text-muted">Cart Summary</h1>
-    <div class="row mt-5">
-        <div class="col-lg-8">
-            <div class="table shadow">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Product Name</th>
-                            <th>Image</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th><button class="btn"><i class="fa-solid fa-ellipsis-vertical"></i></button></th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                        <tr>
-                            <td>1</td>
-                            <td>Men Casual Premium Slim Fit T-Shirt</td>
-                            <td><img width="100px" height="100px" src="https://w7.pngwing.com/pngs/826/253/png-transparent-t-shirt-polo-shirt-clothing-sleeve-black-t-shirt-black-crew-neck-t-shirt-tshirt-fashion-cloth-thumbnail.png" alt=""></td>
-                            <td>
-    
-                            </td>
-                            <td>$200</td>
-                            <td><button class="btn"><i class="fa-trash fa-solid text-danger "></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<div
+  *ngIf="cartItems.length > 0"
+  class="container mb-5"
+  style="margin-top: 100px"
+>
+  <h1 class="text-muted">Cart Summary</h1>
+  <div class="row mt-2">
+    <div class="col-lg-8">
+      <div class="table shadow">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product Name</th>
+              <th>Image</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>
+                <button class="btn">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of cartItems; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ product.title.slice(0, 20) }}...</td>
+              <td>
+                <img
+                  width="100px"
+                  height="100px"
+                  [src]="product.image"
+                  alt=""
+                />
+              </td>
+              <td>
+                <div class="d-flex">
+                  <button
+                    (click)="decrementCart(product._id)"
+                    class="btn fw-bolder"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="num"
+                    [value]="product.quantity"
+                    class="form-control text-center text-dark"
+                    id="inputQuantity"
+                    style="max-width: 3rem"
+                    readonly
+                  />
+                  <button
+                    (click)="incrementCart(product._id)"
+                    class="btn fw-bolder"
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+              <td>$ {{ product.grandTotal }}</td>
+              <td>
+                <button (click)="removeItem(product._id)" class="btn">
+                  <i class="fa-trash fa-solid text-danger"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="actions w-100">
+          <button
+            (click)="emptyCart()"
+            class="float-end btn btn-outline-danger"
+          >
+            Empty Cart
+          </button>
+          <button routerLink="" class="float-end btn btn-outline-success me-2">
+            Add More Items
+          </button>
         </div>
-        <div class="col-lg-4">
-            <div class="border rounded p-3 ">
-                <h2> Sub Total : <span class="text-danger">$200</span></h2>
-                <hr>
-                <button class="btn btn-success w-75">Checkout</button>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-lg-4">
+      <div class="border rounded p-3">
+        <h2>
+          Sub Total : <span class="text-danger">$ {{ cartTotal }}</span>
+        </h2>
+        <hr />
+        <button (click)="checkOut()" class="btn btn-success w-75">Checkout</button>
+      </div>
+    </div>
+  </div>
 </div>

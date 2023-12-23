@@ -1,6 +1,7 @@
 import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -9,18 +10,30 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   loginUsername: string = '';
-  constructor(private router: Router) {}
+  wishlistCount: number = 0;
+  cartCount:number=0
+  constructor(private router: Router, private api: ApiService) {}
   ngOnInit(): void {
     if (sessionStorage.getItem('username')) {
-      this.loginUsername = sessionStorage.getItem('username')?.split(" ")[0] || '';
+      this.loginUsername =
+        sessionStorage.getItem('username')?.split(' ')[0] || '';
+      this.api.wishlistCount.subscribe((res: any) => {
+        console.log(res);
+        this.wishlistCount = res;
+      });
+      this.api.cartCount.subscribe((res:any)=>{
+        this.cartCount=res;
+      })
     } else {
       this.loginUsername = '';
     }
   }
   logout() {
-    this.loginUsername=""
+    this.loginUsername = '';
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('token');
+    this.wishlistCount = 0;
+    this.cartCount=0
     this.router.navigateByUrl('');
   }
 }
