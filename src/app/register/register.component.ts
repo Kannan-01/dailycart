@@ -21,6 +21,7 @@ export class RegisterComponent {
     private toaster: ToasterService,
     private router: Router
   ) {}
+  
   register() {
     if (this.registerForm.valid) {
       const username = this.registerForm.value.username;

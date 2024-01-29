@@ -29,6 +29,7 @@ export class ApiService {
   getProductAPI(id: any) {
     return this.http.get(`${this.SERVER_URL}/product/get/${id}`);
   }
+
   appendTokenToHeader() {
     let headers = new HttpHeaders();
     const token = sessionStorage.getItem('token');
@@ -37,6 +38,7 @@ export class ApiService {
     }
     return { headers };
   }
+  
   addToWishlistAPI(product: any) {
     return this.http.post(
       `${this.SERVER_URL}/wishlist/add/`,

@@ -17,6 +17,8 @@ export class ViewProductsComponent implements OnInit {
       const { id } = res;
       // get details of particular product
       this.getProductDetails(id)
+      console.log(this.product);
+      
     });
   }
 
@@ -24,6 +26,8 @@ export class ViewProductsComponent implements OnInit {
     this.api.getProductAPI(id).subscribe({
       next: (res: any) => {
         this.product = res;
+        console.log(res);
+        
       },
       error: (err: any) => {
         console.log(err.error);
